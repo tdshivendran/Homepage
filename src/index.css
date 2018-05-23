@@ -1,8 +1,11 @@
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-    background-image: url("http://webneel.com/wallpaper/sites/default/files/images/05-2014/6-sunrise.preview.jpg");
+    /*background-image: url("http://webneel.com/wallpaper/sites/default/files/images/05-2014/6-sunrise.preview.jpg");*/
+    /*background-image: url("https://images.unsplash.com/photo-1504282706065-f5866e9cbeeb?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=dfa6be1ab061972747998af2cf956730");*/
+    background-image: url("https://images.unsplash.com/photo-1514315153150-cd7d8d716178?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=efc3fdab438b6a5cc5c7d98446d05a96");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,74 +13,201 @@ body {
     background-color: #464646;
 }
 
-button {
+.background-overlay.show {
+    opacity: 0.5;
+}
+.background-overlay {
+    z-index: -1;
+    background-image: url('overlay-vignette.png');
+    background-size: 100% 100%;
+    opacity: 0;
+    transition: opacity .5s ease-out;
+}
+.background-overlay, .background-overlay.high:after, .background-overlay.low:after {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
+
+div{
+    display: block;
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: white;
+}
+
+a:hover, a:active, a:focus{
+    color: white;
+    text-decoration:none;
+}
+
+.TopLeft {
+    position: fixed;
+    padding: 1rem;
+}
+
+.TopLeftDrop {
+    position: absolute;
+    top: 3rem;
+    left: 1rem;
+    z-index: 1;
+}
+
+.react-calendar {
+    font-size: 1rem;
+}
+
+.TopRight {
+    right:0;
+    position: fixed;
+    padding: 1rem;
+}
+
+.TopRightDrop {
+    position: absolute;
+    background: rgba(15,15,15,.5);
+    top: 3rem;
+    right: 1rem;
+    z-index: 10;
+}
+
+input{
+    color: white;
     background: transparent;
-    border: 2px solid #e7e7e7;
-    color: white;
+    border: none;
+    margin: 0;
 }
 
-input[type = submit] {
-    background: transparent;
-    border: solid #e7e7e7;
-    color: white;
-}
-
-.center-text {
-    text-align: center;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: x-large;
-}
-
-.center-below {
-    text-align: center;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-}
-
-.center-bottom {
-    text-align: center;
-    position: absolute;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
+label {
+    padding-top: 0.5rem;
 }
 
 ul {
+    position: relative;
+    padding: 0 1rem 0 1rem;
+    color: white;
     list-style: none;
+    text-align: left;
 }
 
-ul>li:hover{
-    background-color: #F5F5F5;
+li {
+    position: relative;
 }
 
-input[type=text] {
-    text-align: center;
+input:active, input:focus{
+    text-decoration: none;
+    border:none;
+    outline: none;
+}
+
+.todoForm>input:hover, .todoForm>input:active {
+    color:#fff;
+    background:#009688;
+    text-decoration: none;
+}
+
+.todoForm>input:after {
+    clicked:false;
+    color:#009688;
+    text-decoration: none;
+}
+
+.removeButton {
+    position: absolute;
+    right: 0;
     border: none;
-    background: transparent;
-    border-bottom-width: 2px;
+    background-color: transparent;
+    color: white;
+}
+
+.removeButton:hover, .removeButton:active {
+    color:#fff;
+    background:#009688;
+    text-decoration: none;
+}
+
+.removeButton:after {
+    clicked:false;
+    color:#009688;
+    text-decoration: none;
+}
+
+.todoForm {
+    margin: 0.5rem 1rem 0.5rem 1rem;
+    border-bottom: 1.5px;
     border-bottom-style: solid;
     border-bottom-color: white;
+}
+
+.TimeWrap {
     color: white;
-    caret-color: white;
-
+    padding-left: 5em;
+    padding-right: 5rem;
+    padding-top: 28vh;
+    align-items: center;
+    justify-content: center;
 }
 
-::placeholder {
+.ClockContent {
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+.weatherWidgetWrap {
     text-align: center;
-    color: silver;
-    opacity: 1;
+    padding: 1rem;
 }
 
-:-ms-input-placeholder {
-    ext-align: center;
-    color: silver;
-    opacity: 1;
+.weatherWidget {
+    font-size: 3rem;
+    font-weight: bold;
 }
+
+.bottomWrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+
+.Quote{
+    color: white;
+    font-size: 1rem;
+}
+
+.quoteAuthor {
+    color: white;
+    font-size: 0.9rem;
+    opacity: .75
+}
+
+.newQuoteButton {
+    color: white;
+    background: transparent;
+    border: 1px solid;
+    border-color: white;
+}
+
+.newQuoteButton:hover, .newQuoteButton:active {
+    color:#fff;
+    background:#009688;
+    text-decoration: none;
+    outline: none;
+}
+.newQuoteButton:after {
+    clicked:false;
+    color:#009688;
+    text-decoration: none;
+    outline: none;
+}
+
+
