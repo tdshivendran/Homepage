@@ -14,7 +14,6 @@ class ViewList extends React.Component{
 
     Remove(key){
         let i=todoItems.map(function(o) { return o.index; }).indexOf(key);
-        console.log(i)
         todoItems.splice(i, 1);
         this.setState({items: todoItems});
     }
@@ -48,7 +47,7 @@ class ToDoList extends React.Component{
     }
 
     handleSubmit(event){
-        if (this.state.value != '') {
+        if (this.state.value !== '') {
             todoItems.unshift({
                 index: todoItems.length+1,
                 values: this.state.value

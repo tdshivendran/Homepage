@@ -10,7 +10,6 @@ class ClockGreet extends React.Component {
             () => this.tick(),
             1000
         );
-        console.log(this.state.date);
     }
 
     componentWillUnmount() {

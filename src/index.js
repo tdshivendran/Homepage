@@ -55,7 +55,7 @@ class NavContent extends React.Component{
             <main>
                 <div class="background-overlay show"></div>
                 <div class="TopLeft">
-                    <a href="#calender" class="calenderButton" onClick={this.handleClickCalender}>Calender</a>
+                    <a href="#calender" class="calenderButton" onClick={this.handleClickCalender}>Calendar</a>
                 </div>
                 <div class="TopLeftDrop">
                     {this.state.dropdownCalender}
@@ -73,11 +73,12 @@ class NavContent extends React.Component{
                     <div>
                         <WelcomeNote/>
                     </div>
-                    {/*<WeatherApp/>*/}
+                    <WeatherApp/>
                 </div>
                 <div class="bottomWrap">
                     <div class="Quote">
                         <QuoteGen/>
+                        <p id="aboutDev">To know more about this website, <a href="https://tdshivendran.github.io/aboutme/" target="_blank">contact developer</a></p>
                     </div>
                 </div>
             </main>

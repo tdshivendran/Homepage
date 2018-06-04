@@ -4,8 +4,8 @@
 
 body {
     /*background-image: url("http://webneel.com/wallpaper/sites/default/files/images/05-2014/6-sunrise.preview.jpg");*/
-    /*background-image: url("https://images.unsplash.com/photo-1504282706065-f5866e9cbeeb?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=dfa6be1ab061972747998af2cf956730");*/
-    background-image: url("https://images.unsplash.com/photo-1514315153150-cd7d8d716178?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=efc3fdab438b6a5cc5c7d98446d05a96");
+    background-image: url("https://images.unsplash.com/photo-1504282706065-f5866e9cbeeb?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=dfa6be1ab061972747998af2cf956730");
+    /*background-image: url("https://images.unsplash.com/photo-1514315153150-cd7d8d716178?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=efc3fdab438b6a5cc5c7d98446d05a96");*/
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -14,7 +14,7 @@ body {
 }
 
 .background-overlay.show {
-    opacity: 0.5;
+    opacity: 1;
 }
 .background-overlay {
     z-index: -1;
@@ -148,6 +148,7 @@ input:active, input:focus{
 }
 
 .TimeWrap {
+    font-weight: 500;
     color: white;
     padding-left: 5em;
     padding-right: 5rem;
@@ -158,7 +159,6 @@ input:active, input:focus{
 
 .ClockContent {
     font-size: 6rem;
-    font-weight: bold;
 }
 
 .weatherWidgetWrap {
@@ -167,8 +167,18 @@ input:active, input:focus{
 }
 
 .weatherWidget {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .ClockContent {
+        font-size: 3.5rem;
+    }
+    .weatherWidget {
+        font-size: 1.8rem;
+    }
 }
 
 .bottomWrap {
@@ -210,4 +220,20 @@ input:active, input:focus{
     outline: none;
 }
 
+#weatherdesc {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+
+#aboutDev {
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+
+#aboutDev a {
+    color: coral;
+}
 
