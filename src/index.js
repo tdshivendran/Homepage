@@ -78,7 +78,7 @@ class NavContent extends React.Component{
                 <div class="bottomWrap">
                     <div class="Quote">
                         <QuoteGen/>
-                        <p id="aboutDev">To know more about this website, <a href="https://tdshivendran.github.io/aboutme/" target="_blank">contact developer</a></p>
+                        <p id="aboutDev">To know more about this website, <a href="https://tdshivendran.github.io/aboutme/" target="_blank" rel="noopener noreferrer">contact developer</a></p>
                     </div>
                 </div>
             </main>

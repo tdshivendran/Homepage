@@ -8,9 +8,7 @@ class WeatherApp extends React.Component {
         this.getLocationandWeather=this.getLocationandWeather.bind(this);
         this.state={
             unit:'F',
-            wData:'',
-            api:  "c1e67f8c28c7c647a8d30b68282aa936",
-            page: "https://api.openweathermap.org/data/2.5/weather?"
+            wData:''
         };
     }
 
@@ -25,7 +23,7 @@ class WeatherApp extends React.Component {
             location.getCurrentPosition(function (position) {
                 let latitude = position.coords.latitude;
                 let longitude= position.coords.longitude;
-                fetch(this.state.page+"lat=" + latitude + "&lon=" + longitude + "&APPID=" + this.state.api).then(function(res){
+                fetch(process.env.REACT_APP_WEATHER_URL +"?lat=" + latitude + "&lon=" + longitude + "&APPID=" + process.env.REACT_APP_WEATHER_API).then(function(res){
                     return res.json();
                 }).then(function (data) {
                     this.setState({wData:data})
@@ -38,7 +36,8 @@ class WeatherApp extends React.Component {
         if(this.state.wData === ''){
             return(
                 <div>
-
+                    <br/>
+                    Enable Location to use the weather widget.
                 </div>
             );
         }
