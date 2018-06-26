@@ -8,9 +8,21 @@ import CalenderApp from "./Calender.js";
 import WeatherApp from "./Weather";
 
 let todoItems = [];
-todoItems.push({index: 1, values: "Finish Homework"});
-todoItems.push({index: 2, values: "Go shopping"});
-todoItems.push({index: 3, values: "Buy flowers"});
+
+let retrievedData = localStorage.getItem("dashboard2287todo");
+let todo = JSON.parse(retrievedData);
+
+if(todo === null){
+    todoItems.push({index: 1, values: "Finish Homework"});
+    todoItems.push({index: 2, values: "Go shopping"});
+    todoItems.push({index: 3, values: "Buy flowers"});
+    localStorage.setItem("dashboard2287todo", JSON.stringify(todoItems));
+}
+else {
+    for (let i=0; i<todo.length; i++){
+        todoItems.push(todo[i]);
+    }
+}
 
 function WelcomeNote(){
     return(

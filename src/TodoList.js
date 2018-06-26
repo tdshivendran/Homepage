@@ -15,24 +15,35 @@ class ViewList extends React.Component{
     Remove(key){
         let i=todoItems.map(function(o) { return o.index; }).indexOf(key);
         todoItems.splice(i, 1);
+        localStorage.setItem("dashboard2287todo", JSON.stringify(todoItems));
         this.setState({items: todoItems});
     }
 
     render(){
-        return (
-            <div>
-                <ul>
-                    {this.state.items.map(list => (
-                        <li key={list.index}>
+        if(todoItems.length){
+            return (
+                <div>
+                    <ul>
+                        {this.state.items.map(list => (
+                            <li key={list.index}>
                             <span class="listValues">
                                 {list.values}
                             </span>
-                            <button class="removeButton" key={list.index} onClick={this.Remove.bind(this, list.index)}>&times;</button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
+                                <button class="removeButton" key={list.index} onClick={this.Remove.bind(this, list.index)}>&times;</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <p style={{ color:'white', paddingBottom: '0.5rem'}}>No To-Do's here.</p>
+                </div>
+            );
+        }
+
     }
 }
 
@@ -52,6 +63,7 @@ class ToDoList extends React.Component{
                 index: todoItems.length+1,
                 values: this.state.value
             });
+            localStorage.setItem("dashboard2287todo", JSON.stringify(todoItems));
             this.setState(prevState => ({
                     value:''
                 })
@@ -78,60 +90,5 @@ class ToDoList extends React.Component{
         );
     }
 }
-
-
-
-
-/*
-
-function DoList(props){
-    return(
-        <ul>
-            {props.lists.map(list => (
-                <li>
-                    {list.index}
-                    <button>&times;</button>
-                </li>
-            ))}
-        </ul>
-    );
-}
-
-class ToDoList extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleChange=this.handleChange.bind(this);
-        this.handleSubmit=this.handleSubmit.bind(this);
-        this.state={lists: props.lists, value: ''};
-    }
-
-    handleSubmit(event){
-        const item={value: this.state.value};
-        this.setState(prevState => ({
-                lists: prevState.lists.concat(item),
-                value:''
-            })
-        );
-        event.preventDefault();
-    }
-
-    handleChange(event){
-        this.setState({value: event.target.value});
-    }
-
-    render(){
-        return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <input type="text" placeholder="Add your  here" value={this.state.value} onChange={this.handleChange}/>
-                    </label>
-                    <input type="Submit" value="+"/>
-                </form>
-                <DoList lists={this.state.lists}/>
-            </div>
-        );
-    }
-}*/
 
 export default ToDoList;
