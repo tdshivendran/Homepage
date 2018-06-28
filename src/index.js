@@ -38,9 +38,11 @@ class NavContent extends React.Component{
         super(props);
         this.handleClickCalender = this.handleClickCalender.bind(this);
         this.handleClickToDo = this.handleClickToDo.bind(this);
+        // this.componentWillMount = this.componentWillMount.bind(this);
         this.state = {
             dropdownCalender: '',
-            dropdownToDo: ''
+            dropdownToDo: '',
+            image:''
         };
     }
 
@@ -62,10 +64,61 @@ class NavContent extends React.Component{
         }
     }
 
+    componentWillMount(){
+
+        let retrievedimageData = localStorage.getItem("dashboard2287image");
+        let count = localStorage.getItem("dashboard2287imagecount");
+        let images = JSON.parse(retrievedimageData);
+
+        if(images === null || (count === null || Number(count) >= '30')){
+            let url = process.env.REACT_APP_BG_IMAGE_URL + process.env.REACT_APP_BG_IMAGE_ID;
+            fetch(url).then(function(res){
+                return res.json();
+            }).then(function (data) {
+                if(data.errors){
+                    if (images !== null){
+                        let x = Math.floor((Math.random() * 30)+1);
+                        this.setState({image: images[x].urls.raw});
+                    }
+                    else {
+                        console.log("Be Happy1")
+                    }
+                }
+                else{
+                    this.setState({image: data[0].urls.raw});
+                    localStorage.setItem("dashboard2287image", JSON.stringify(data));
+                    localStorage.setItem("dashboard2287imagecount", 1);
+                }
+            }.bind(this)).catch(function(error){
+                if (images !== null){
+                    let x = Math.floor((Math.random() * 10)+1);
+                    this.setState({image: images[x].urls.raw});
+                }
+                else {
+                    console.log("Be Happy2")
+                }
+            }.bind(this));
+        }
+        else {
+            if (images !== null){
+                if(images[count].urls.raw){
+                    this.setState({image: images[count].urls.raw});
+                }
+            }
+            count++;
+            localStorage.setItem("dashboard2287imagecount", count);
+        }
+    }
+
     render(){
         return(
             <main>
+                <div id="bg" style={{
+                    backgroundImage: `url(${this.state.image})`
+                }}>
+                </div>
                 <div class="background-overlay show"></div>
+
                 <div class="TopLeft">
                     <a href="#calender" class="calenderButton" onClick={this.handleClickCalender}>Calendar</a>
                 </div>

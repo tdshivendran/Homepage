@@ -5,28 +5,28 @@ class QuoteGen extends React.Component{
         super(props);
         this.handleClick=this.handleClick.bind(this);
         this.state={
-            url:'https://talaikis.com/api/quotes/random/',
             quote:'',
             author: ''
         }
     }
 
     componentDidMount(){
-        fetch(this.state.url).then(function(res){
-            return res.json();
-        }).then(function (data) {
-            this.setState(
-                {quote:data.quote, author:data.author}
-            );
-        }.bind(this));
+        this.handleClick();
     }
 
     handleClick(){
-        fetch(this.state.url).then(function(res){
-            return res.json();
+        let myHeaders = new Headers();
+        myHeaders.append('X-Mashape-Key',process.env.REACT_APP_QUOTE_API);
+        myHeaders.append('Content-Type','text/plain');
+        fetch(process.env.REACT_APP_QUOTE_URL,{
+                method: 'GET',
+                headers: myHeaders
+            }
+        ).then(function(result){
+            return result.json();
         }).then(function (data) {
             this.setState(
-                {quote:data.quote, author:data.author}
+                {quote:data[0].quote, author:data[0].author}
             );
         }.bind(this));
     }
